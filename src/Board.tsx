@@ -1,11 +1,12 @@
 import React from 'react';
 import Square from './Square';
 import './index.css';
+import {Field} from "./Game";
 
 interface BoardProps {
     width?: number;
     height?: number;
-    board?: any[][];
+    board?: Field[]
     onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
@@ -13,8 +14,10 @@ const Board: React.FC<BoardProps> =  (props) => {
     const generateRow = (y:number) => {
         let row: any[] = [];
         for (let x = 0; x < props.width; x++) {
-            const fieldNumber = Number.isNaN(props.board[y][x].value) ? '' : props.board[y][x].value + '';
-            row = row.concat(<Square onClick={props.onClick} styleClass="hidden" fieldNumber={fieldNumber}/>);
+            const idx = y * props.height + x;
+            const fieldNumber = Number.isNaN(props.board[idx].value) ? '' : props.board[idx].value + '';
+            const currentStyle = props.board[idx].style;
+            row = row.concat(<Square onClick={props.onClick} styleClass={currentStyle} fieldNumber={fieldNumber}/>);
         }
         return (
             <div className={"row"}>

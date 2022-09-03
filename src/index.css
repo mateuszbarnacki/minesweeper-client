@@ -1,0 +1,110 @@
+.game-board {
+    text-align: center;
+}
+
+.hidden {
+    font-size: 20px;
+    margin: 5px 5px;
+    padding: 10px 10px;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(231, 242, 104);
+}
+
+.zeroStyle {
+    font-size: 20px;
+    margin: 5px 5px;
+    padding: 10px 10px;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(251, 252, 240);
+}
+
+.oneStyle {
+    font-size: 20px;
+    color: aqua;
+    margin: 5px 5px;
+    padding: 10px 10px;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(251, 252, 240);
+}
+
+.twoStyle {
+    font-size: 20px;
+    color: firebrick;
+    margin: 5px 5px;
+    padding: 10px 10px;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(251, 252, 240);
+}
+
+.threeStyle {
+    font-size: 20px;
+    color: darkkhaki;
+    margin: 5px 5px;
+    padding: 10px 10px;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(251, 252, 240);
+}
+
+.fourStyle {
+    font-size: 20px;
+    color: deeppink;
+    margin: 5px 5px;
+    padding: 10px 10px;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(251, 252, 240);
+}
+
+.fiveStyle {
+    font-size: 20px;
+    color: darkorchid;
+    margin: 5px 5px;
+    padding: 10px 10px;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(251, 252, 240);
+}
+
+.sixStyle {
+    font-size: 20px;
+    color: darkgoldenrod;
+    margin: 5px 5px;
+    padding: 10px 10px;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(251, 252, 240);
+}
+
+.sevenStyle {
+    font-size: 20px;
+    color: darkblue;
+    margin: 5px 5px;
+    padding: 10px 10px;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(251, 252, 240);
+}
+
+.eightStyle {
+    font-size: 20px;
+    color: coral;
+    margin: 5px 5px;
+    padding: 10px 10px;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(251, 252, 240);
+}
+
+.bombStyle {
+    font-size: 20px;
+    margin: 5px 5px;
+    padding: 10px 10px;
+    width: 40px;
+    height: 40px;
+    background-color: wheat;
+}
