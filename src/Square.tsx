@@ -6,13 +6,14 @@ interface SquareProps {
     fieldNumber?: string;
     onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
     styleClass?: string;
+    index?: string;
 }
 
-const Square: React.FC<SquareProps> = ({fieldNumber, onClick, styleClass}: SquareProps) => {
+const Square: React.FC<SquareProps> = ({fieldNumber, onClick, styleClass, index}: SquareProps) => {
     let buttonText: any = styleClass === 'hidden' || styleClass === 'zeroStyle' ? ' ' : fieldNumber;
-    buttonText = fieldNumber === 'X' ? <i><FontAwesomeIcon icon={faBomb} /></i> : buttonText;
+    buttonText = styleClass === 'win' || styleClass === 'lose' ? <i><FontAwesomeIcon icon={faBomb} /></i> : buttonText;
     return (
-        <button onClick={onClick} className={styleClass}>
+        <button onClick={onClick} id={index} className={styleClass}>
             {buttonText}
         </button>
     );

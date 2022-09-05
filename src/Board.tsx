@@ -17,7 +17,7 @@ const Board: React.FC<BoardProps> =  (props) => {
             const idx = y * props.height + x;
             const fieldNumber = Number.isNaN(props.board[idx].value) ? '' : props.board[idx].value + '';
             const currentStyle = props.board[idx].style;
-            row = row.concat(<Square onClick={props.onClick} styleClass={currentStyle} fieldNumber={fieldNumber}/>);
+            row = row.concat(<Square onClick={props.onClick} styleClass={currentStyle} fieldNumber={fieldNumber} index={''+idx}/>);
         }
         return (
             <div className={"row"}>
