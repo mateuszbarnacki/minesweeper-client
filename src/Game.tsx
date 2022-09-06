@@ -1,6 +1,7 @@
-import React, {MutableRefObject, useEffect, useRef, useState} from 'react';
+import React, {MutableRefObject, useRef, useState} from 'react';
 import Board from './Board';
 import './index.css';
+import Timer from './Timer';
 
 export interface Field {
     value?: string;
@@ -16,7 +17,6 @@ function prepareBoard(board: Field[], height: number, width: number, numberOfBom
     while (counter < numberOfBombs) {
         x = Math.round(Math.random() * 100) % width;
         y = Math.round(Math.random() * 100) % height;
-        console.log(x, y);
         const idx = y * height + x;
         if (board[idx].value === '0') {
             copy[idx].value = 'X';
@@ -137,70 +137,44 @@ function checkNeighbours(copy: Field[], currentIdx: number, height: number, widt
     }
 }
 
-function mapSeconds(secondsCounter: number): string {
-    const minutesNumber: number = Math.floor(secondsCounter / 60);
-    const hoursNumber: number = Math.floor(secondsCounter / 3600);
-    const seconds: string = (secondsCounter % 60) > 9 ? '' + (secondsCounter % 60) : '0' + (secondsCounter % 60);
-    const minutes: string = minutesNumber > 9 ? '' + minutesNumber : '0' + minutesNumber;
-    const hours: string = hoursNumber > 9 ? '' + hoursNumber : '0' + hoursNumber;
-    return hours + ':' + minutes + ':' + seconds;
-}
-
-function printResult(secondsCounter: number, result: string) : string {
-    return result === null ? mapSeconds(secondsCounter) : result;
-}
-
-function playAgain(width: number, height: number, setBoard: Function): void {
-    setBoard(getStartArray(width, height));
-}
-
 const Game: React.FC = () => {
     const width: number = 8;
     const height: number = 8;
     const numberOfBombs: number = 10;
     const [board, setBoard] = useState(getStartArray(width, height));
-    const [time, setTime] = useState(Date.now());
-    const secondsCounter = useRef(0);
-    const result = useRef(null);
+    const [countTime, setCountTime] = useState(false);
+    const secondsCounter: MutableRefObject<number> = useRef(0);
     const isStart: MutableRefObject<boolean> = useRef(true);
     const isFirstClick: MutableRefObject<boolean> = useRef(false);
-    const countTime: MutableRefObject<boolean> = useRef(true);
-
-    useEffect(() => {
-        if (isFirstClick.current) {
-            const interval = setInterval(() => {
-                setTime(Date.now());
-                secondsCounter.current++;
-            }, 1000);
-            return () => clearInterval(interval);
-        }
-    });
-
+    const playAgainStyle: MutableRefObject<string> = useRef('playAgainButtonHidden');
+    const saveResultStyle: MutableRefObject<string> = useRef('saveResultButtonHidden');
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         if (!isFirstClick.current) {
             isFirstClick.current = true;
+            setCountTime(true);
         }
         e.preventDefault();
         const button: HTMLButtonElement = e.currentTarget;
         const idx: number = parseInt(button.id, 10);
         if (isEnd(board, numberOfBombs)) {
             console.log("End of the game!");
-            console.log(result.current);
             // no action
         } else if (!board[idx].wasClicked && board[idx].value === 'X') {
             console.log('User lose!');
+            console.log(secondsCounter.current);
+            setCountTime(false);
+            playAgainStyle.current = 'playAgainButtonVisible';
             let copy: any[] = [...board];
             showBombs(copy);
-            result.current = mapSeconds(secondsCounter.current);
             setBoard(copy);
         } else if (!board[idx].wasClicked) {
             let copy: any[] = [...board];
             const inDepth = copy[idx].value === '0';
             checkNeighbours(copy, idx, height, width, inDepth);
             if (isEnd(copy, numberOfBombs)) {
-                console.log('User win: ' + mapSeconds(secondsCounter.current));
-                result.current = mapSeconds(secondsCounter.current);
+                console.log('User win: ' + secondsCounter.current);
+                console.log(secondsCounter.current);
                 copy.forEach(item => item.wasClicked = true);
                 copy.forEach(item => {
                     if (item.value === 'X') {
@@ -209,10 +183,22 @@ const Game: React.FC = () => {
                     return item;
                 });
                 // possible send data from here
+                saveResultStyle.current = 'saveResultButtonVisible';
+                playAgainStyle.current = 'playAgainButtonVisible';
+                setCountTime(false);
             }
             setBoard(copy);
-            countTime.current = false;
         }
+    };
+
+    const playAgain = () => {
+        secondsCounter.current = 0;
+        isStart.current = true
+        isFirstClick.current = false;
+        playAgainStyle.current = 'playAgainButtonHidden';
+        saveResultStyle.current = 'saveResultButtonHidden';
+        setBoard(getStartArray(width, height));
+        setCountTime(false);
     };
 
     if (isStart.current) {
@@ -222,8 +208,18 @@ const Game: React.FC = () => {
     }
     return (
         <div className="game-board">
-            <h2>{printResult(secondsCounter.current, result.current)}</h2>
+            <Timer seconds={secondsCounter} countTime={countTime}/>
             <Board width={width} height={height} board={board} onClick={handleClick}/>
+            <div>
+                <button className={playAgainStyle.current} onClick={playAgain}>
+                    {"Play again"}
+                </button>
+            </div>
+            <div>
+                <button className={saveResultStyle.current}>
+                    {"Save result"}
+                </button>
+            </div>
         </div>
     );
 }

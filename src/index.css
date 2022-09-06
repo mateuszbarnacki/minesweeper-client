@@ -126,3 +126,38 @@
     vertical-align: top;
     background-color: darkred;
 }
+
+.playAgainButtonHidden {
+    display: none;
+}
+
+.playAgainButtonVisible {
+    display: inline-block;
+    width: 150px;
+    height: 30px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 5px 5px;
+    border-radius: 20px;
+    font-size: 18px;
+    /*color: rgb(255, 255, 255);*/
+    background-color: rgb(231, 242, 104);
+    /*border-color: rgb(255, 255, 255);*/
+}
+
+.saveResultButtonHidden {
+    display: none;
+}
+
+.saveResultButtonVisible {
+    display: inline-block;
+    width: 150px;
+    height: 30px;
+    margin: 10px 10px;
+    padding: 5px 5px;
+    font-size: 18px;
+    border-radius: 20px;
+    /*color: rgb(255, 255, 255);*/
+    background-color: rgb(231, 242, 104);
+    /*border-color: rgb(255, 255, 255);*/
+}
