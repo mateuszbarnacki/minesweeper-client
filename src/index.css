@@ -161,3 +161,99 @@
     background-color: rgb(231, 242, 104);
     /*border-color: rgb(255, 255, 255);*/
 }
+
+.timer {
+    margin-top: 5%;
+    display: inline-block;
+}
+
+.header {
+    width: 100%;
+    background-color: #e6f268;
+    position: relative;
+}
+
+.nav
+{
+    padding: 10px 0;
+    margin-top: 7px;
+    text-align: center;
+    z-index: 10;
+    position: absolute;
+}
+
+.mainTitle
+{
+    width: 100%;
+    background-color: #e6f268;
+    text-align: center;
+    z-index: 2;
+    position: absolute;
+}
+
+ol
+{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    font-size: 18px;
+    height: 35px;
+    line-height: 200%;
+    display: inline-block;
+}
+
+ol a
+{
+    color: #000000;
+    text-decoration: none;
+    display: block;
+}
+
+ol > li
+{
+    float: left;
+    width: 80px;
+    height: 40px;
+}
+
+ol > li:hover
+{
+    background-color: #e6f268;
+}
+
+ol > li:hover > a
+{
+    color: #4d5213;
+}
+
+ol > li > ul
+{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    height: 40px;
+    display: none;
+}
+
+ol > li:hover > ul
+{
+    display: block;
+}
+
+ol > li > ul > li
+{
+    background-color: #e6f268;
+    position: relative;
+    z-index: 100;
+    border-top: 1px dashed #8f963b;
+}
+
+ol > li > ul > li:hover
+{
+    background-color: #f0f5bc;
+}
+
+ol > li > ul > li:hover > a
+{
+    color: #4d5213;
+}

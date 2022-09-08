@@ -2,6 +2,7 @@ import React, {MutableRefObject, useRef, useState} from 'react';
 import Board from './Board';
 import './index.css';
 import Timer from './Timer';
+import AppBar from "./AppBar";
 
 export interface Field {
     value?: string;
@@ -208,6 +209,7 @@ const Game: React.FC = () => {
     }
     return (
         <div className="game-board">
+            <AppBar/>
             <Timer seconds={secondsCounter} countTime={countTime}/>
             <Board width={width} height={height} board={board} onClick={handleClick}/>
             <div>

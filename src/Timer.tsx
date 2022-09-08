@@ -28,7 +28,9 @@ const Timer: React.FC<TimerProps> = ({seconds, countTime}) => {
     }, [countTime]);
 
     return (
-      <h2>{mapSeconds(seconds.current)}</h2>
+        <div className="timer">
+            <h2>{mapSeconds(seconds.current)}</h2>
+        </div>
     );
 };
 
