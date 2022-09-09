@@ -3,6 +3,7 @@ import Board from './Board';
 import './index.css';
 import Timer from './Timer';
 import AppBar from "./AppBar";
+import Modal from "./Modal";
 
 export interface Field {
     value?: string;
@@ -144,6 +145,7 @@ const Game: React.FC = () => {
     const numberOfBombs: number = 10;
     const [board, setBoard] = useState(getStartArray(width, height));
     const [countTime, setCountTime] = useState(false);
+    const [modalState, setModalState] = useState(false);
     const secondsCounter: MutableRefObject<number> = useRef(0);
     const isStart: MutableRefObject<boolean> = useRef(true);
     const isFirstClick: MutableRefObject<boolean> = useRef(false);
@@ -192,7 +194,7 @@ const Game: React.FC = () => {
         }
     };
 
-    const playAgain = () => {
+    const playAgain: React.MouseEventHandler = () => {
         secondsCounter.current = 0;
         isStart.current = true
         isFirstClick.current = false;
@@ -200,6 +202,11 @@ const Game: React.FC = () => {
         saveResultStyle.current = 'saveResultButtonHidden';
         setBoard(getStartArray(width, height));
         setCountTime(false);
+        setModalState(false);
+    };
+
+    const openModal: React.MouseEventHandler = () => {
+        setModalState(!modalState);
     };
 
     if (isStart.current) {
@@ -218,10 +225,11 @@ const Game: React.FC = () => {
                 </button>
             </div>
             <div>
-                <button className={saveResultStyle.current}>
+                <button className={saveResultStyle.current} onClick={openModal}>
                     {"Save result"}
                 </button>
             </div>
+            <Modal toggle={modalState} result={secondsCounter.current}/>
         </div>
     );
 }

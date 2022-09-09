@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faBars} from "@fortawesome/free-solid-svg-icons";
+import {faBars, faBomb} from "@fortawesome/free-solid-svg-icons";
 import './index.css';
 
 const AppBar: React.FC = () => {
@@ -17,7 +17,11 @@ const AppBar: React.FC = () => {
                 </ol>
             </div>
             <div className="mainTitle">
-                <h2>Minesweeper</h2>
+                <h2>
+                    <i className="header-icon"><FontAwesomeIcon icon={faBomb}/></i>
+                    Minesweeper
+                    <i className="header-icon"><FontAwesomeIcon icon={faBomb}/></i>
+                </h2>
             </div>
         </div>
     );

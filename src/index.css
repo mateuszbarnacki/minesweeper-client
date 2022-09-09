@@ -1,3 +1,8 @@
+body {
+    /* Background pattern from Toptal Subtle Patterns */
+    background-image: url("../images/prism.png");
+    font-family: "Poppins", sans-serif;
+}
 .game-board {
     text-align: center;
 }
@@ -7,8 +12,14 @@
     margin: 5px 5px;
     width: 45px;
     height: 45px;
+    border: none;
+    cursor: pointer;
     vertical-align: top;
     background-color: rgb(231, 242, 104);
+}
+
+.hidden:hover {
+    background-color: rgb(221, 237, 14);
 }
 
 .zeroStyle {
@@ -16,6 +27,8 @@
     margin: 5px 5px;
     width: 45px;
     height: 45px;
+    border: none;
+    opacity: 0.95;
     vertical-align: top;
     background-color: rgb(251, 252, 240);
 }
@@ -26,6 +39,8 @@
     margin: 5px 5px;
     width: 45px;
     height: 45px;
+    border: none;
+    opacity: 0.95;
     vertical-align: top;
     background-color: rgb(251, 252, 240);
 }
@@ -36,6 +51,8 @@
     margin: 5px 5px;
     width: 45px;
     height: 45px;
+    border: none;
+    opacity: 0.95;
     vertical-align: top;
     background-color: rgb(251, 252, 240);
 }
@@ -46,6 +63,8 @@
     margin: 5px 5px;
     width: 45px;
     height: 45px;
+    border: none;
+    opacity: 0.95;
     vertical-align: top;
     background-color: rgb(251, 252, 240);
 }
@@ -56,6 +75,8 @@
     margin: 5px 5px;
     width: 45px;
     height: 45px;
+    border: none;
+    opacity: 0.95;
     vertical-align: top;
     background-color: rgb(251, 252, 240);
 }
@@ -66,6 +87,8 @@
     margin: 5px 5px;
     width: 45px;
     height: 45px;
+    border: none;
+    opacity: 0.95;
     vertical-align: top;
     background-color: rgb(251, 252, 240);
 }
@@ -76,6 +99,8 @@
     margin: 5px 5px;
     width: 45px;
     height: 45px;
+    border: none;
+    opacity: 0.95;
     vertical-align: top;
     background-color: rgb(251, 252, 240);
 }
@@ -86,6 +111,8 @@
     margin: 5px 5px;
     width: 45px;
     height: 45px;
+    border: none;
+    opacity: 0.95;
     vertical-align: top;
     background-color: rgb(251, 252, 240);
 }
@@ -96,17 +123,10 @@
     margin: 5px 5px;
     width: 45px;
     height: 45px;
+    border: none;
+    opacity: 0.95;
     vertical-align: top;
     background-color: rgb(251, 252, 240);
-}
-
-.bombStyle {
-    font-size: 20px;
-    margin: 5px 5px;
-    width: 45px;
-    height: 45px;
-    vertical-align: top;
-    background-color: wheat;
 }
 
 .win {
@@ -114,6 +134,7 @@
     margin: 5px 5px;
     width: 45px;
     height: 45px;
+    border: none;
     vertical-align: top;
     background-color: rgb(231, 242, 104);
 }
@@ -123,8 +144,9 @@
     margin: 5px 5px;
     width: 45px;
     height: 45px;
+    border: none;
     vertical-align: top;
-    background-color: darkred;
+    background-color: rgb(245, 60, 47);
 }
 
 .playAgainButtonHidden {
@@ -140,9 +162,18 @@
     padding: 5px 5px;
     border-radius: 20px;
     font-size: 18px;
-    /*color: rgb(255, 255, 255);*/
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
     background-color: rgb(231, 242, 104);
-    /*border-color: rgb(255, 255, 255);*/
+}
+
+.playAgainButtonVisible:hover {
+    background-color: rgb(232, 235, 188);
+}
+
+.playAgainButtonVisible:focus {
+    background-color: rgb(232, 245, 12);
 }
 
 .saveResultButtonHidden {
@@ -157,25 +188,37 @@
     padding: 5px 5px;
     font-size: 18px;
     border-radius: 20px;
-    /*color: rgb(255, 255, 255);*/
+    border: none;
+    cursor: pointer;
     background-color: rgb(231, 242, 104);
-    /*border-color: rgb(255, 255, 255);*/
+}
+
+.saveResultButtonVisible:hover {
+    background-color: rgb(232, 235, 188);
+}
+
+.saveResultButtonVisible:focus {
+    background-color: rgb(232, 245, 12);
 }
 
 .timer {
     margin-top: 5%;
+    opacity: 0.98;
+    color: #ffffff;
     display: inline-block;
 }
 
-.header {
-    width: 100%;
-    background-color: #e6f268;
-    position: relative;
+.header-icon:first-child {
+    margin-right: 1%;
+}
+
+.header-icon:last-child {
+    margin-left: 1%;
 }
 
 .nav
 {
-    padding: 10px 0;
+    padding: 0.75% 0;
     margin-top: 7px;
     text-align: center;
     z-index: 10;
@@ -184,8 +227,9 @@
 
 .mainTitle
 {
-    width: 100%;
+    width: 99%;
     background-color: #e6f268;
+    border-radius: 25px;
     text-align: center;
     z-index: 2;
     position: absolute;
@@ -212,7 +256,7 @@ ol a
 ol > li
 {
     float: left;
-    width: 80px;
+    width: 100px;
     height: 40px;
 }
 
@@ -256,4 +300,102 @@ ol > li > ul > li:hover
 ol > li > ul > li:hover > a
 {
     color: #4d5213;
+}
+
+.ranking {
+    text-align: center;
+}
+
+table {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7.5%;
+    width: 35%;
+    border: 1px solid;
+}
+
+th:first-child {
+    border-right: 1px solid;
+}
+
+.modal {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.modal-active {
+    width: 35%;
+    height: 20%;
+    background-color: transparent;
+    border-radius: 10px;
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    visibility: visible;
+}
+
+.modal-active form input[type=text] {
+    font-size: 24px;
+}
+
+.modal-active form input[type=submit] {
+    width: 150px;
+    height: 30px;
+    margin: 10px 10px;
+    padding: 5px 5px;
+    font-size: 18px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(231, 242, 104);
+}
+
+.modal-active form input[type=submit]:hover {
+    background-color: rgb(232, 235, 188);
+}
+
+.modal-active form input[type=submit]:focus {
+    background-color: rgb(232, 245, 12);
+}
+
+.modal-active form input::-webkit-input-placeholder
+{
+    color: #999;
+}
+
+.modal-active form input:focus::-webkit-input-placeholder
+{
+    color: #428c42;
+}
+
+.modal-active form input:-moz-placeholder
+{
+    color: #999;
+}
+
+.modal-active form input:focus:-moz-placeholder
+{
+    color: #428c42;
+}
+
+.modal-active form input::-moz-placeholder
+{
+    color: #999;
+}
+
+.modal-active form input:focus::-moz-placeholder
+{
+    color: #428c42;
+}
+
+.modal-active form input:-ms-input-placeholder
+{
+    color: #999;
+}
+
+.modal-active form input:focus:-ms-input-placeholder
+{
+    color: #428c42;
 }

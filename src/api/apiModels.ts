@@ -1,6 +1,6 @@
 export interface MinesweeperDto {
     userName?: string;
-    time?: string;
+    time?: number;
 }
 
 export interface SnakeDto {
