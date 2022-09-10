@@ -5,6 +5,11 @@ import Timer from './Timer';
 import AppBar from "./AppBar";
 import ResultForm from "./ResultForm";
 
+/**
+ * @author Mateusz Barnacki
+ * @version 1.0
+ * @since 2022-08-31
+ */
 export interface Field {
     value?: string;
     wasClicked?: boolean;

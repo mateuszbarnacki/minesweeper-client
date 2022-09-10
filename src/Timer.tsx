@@ -1,5 +1,10 @@
 import React, {MutableRefObject, useEffect, useState} from 'react';
 
+/**
+ * @author Mateusz Barnacki
+ * @version 1.0
+ * @since 2022-09-06
+ */
 interface TimerProps {
     seconds?: MutableRefObject<number>;
     countTime?: boolean;

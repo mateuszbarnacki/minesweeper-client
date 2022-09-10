@@ -3,6 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faBars, faBomb} from "@fortawesome/free-solid-svg-icons";
 import './index.css';
 
+/**
+ * @author Mateusz Barnacki
+ * @version 1.0
+ * @since 2022-09-08
+ */
 const AppBar: React.FC = () => {
     return (
         <div className="header">

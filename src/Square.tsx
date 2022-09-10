@@ -2,6 +2,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import {faBomb} from "@fortawesome/free-solid-svg-icons";
 
+/**
+ * @author Mateusz Barnacki
+ * @version 1.0
+ * @since 2022-08-31
+ */
 interface SquareProps {
     fieldNumber?: string;
     onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;

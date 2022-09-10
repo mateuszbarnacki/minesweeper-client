@@ -3,6 +3,11 @@ import Square from './Square';
 import './index.css';
 import {Field} from "./Game";
 
+/**
+ * @author Mateusz Barnacki
+ * @version 1.0
+ * @since 2022-08-31
+ */
 interface BoardProps {
     width?: number;
     height?: number;

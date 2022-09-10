@@ -3,6 +3,11 @@ import * as P from './api/paths';
 import AppBar from "./AppBar";
 import {mapSeconds} from "./Timer";
 
+/**
+ * @author Mateusz Barnacki
+ * @version 1.0
+ * @since 2022-09-09
+ */
 const Ranking: React.FC = () => {
     const [gameResults, setGameResults] = useState([]);
 

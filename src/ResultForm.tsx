@@ -2,6 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {MinesweeperDto} from "./api/apiModels";
 import * as P from './api/paths';
 
+/**
+ * @author Mateusz Barnacki
+ * @version 1.0
+ * @since 2022-09-09
+ */
 interface ResultFormProps {
     toggle?: boolean;
     result?: number;
