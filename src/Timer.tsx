@@ -5,7 +5,7 @@ interface TimerProps {
     countTime?: boolean;
 }
 
-function mapSeconds(secondsCounter: number): string {
+export function mapSeconds(secondsCounter: number): string {
     const minutesNumber: number = Math.floor(secondsCounter / 60);
     const hoursNumber: number = Math.floor(secondsCounter / 3600);
     const seconds: string = (secondsCounter % 60) > 9 ? '' + (secondsCounter % 60) : '0' + (secondsCounter % 60);

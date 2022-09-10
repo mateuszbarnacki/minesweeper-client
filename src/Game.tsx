@@ -3,7 +3,7 @@ import Board from './Board';
 import './index.css';
 import Timer from './Timer';
 import AppBar from "./AppBar";
-import Modal from "./Modal";
+import ResultForm from "./ResultForm";
 
 export interface Field {
     value?: string;
@@ -161,11 +161,8 @@ const Game: React.FC = () => {
         const button: HTMLButtonElement = e.currentTarget;
         const idx: number = parseInt(button.id, 10);
         if (isEnd(board, numberOfBombs)) {
-            console.log("End of the game!");
             // no action
         } else if (!board[idx].wasClicked && board[idx].value === 'X') {
-            console.log('User lose!');
-            console.log(secondsCounter.current);
             setCountTime(false);
             playAgainStyle.current = 'playAgainButtonVisible';
             let copy: any[] = [...board];
@@ -176,8 +173,6 @@ const Game: React.FC = () => {
             const inDepth = copy[idx].value === '0';
             checkNeighbours(copy, idx, height, width, inDepth);
             if (isEnd(copy, numberOfBombs)) {
-                console.log('User win: ' + secondsCounter.current);
-                console.log(secondsCounter.current);
                 copy.forEach(item => item.wasClicked = true);
                 copy.forEach(item => {
                     if (item.value === 'X') {
@@ -185,7 +180,6 @@ const Game: React.FC = () => {
                     }
                     return item;
                 });
-                // possible send data from here
                 saveResultStyle.current = 'saveResultButtonVisible';
                 playAgainStyle.current = 'playAgainButtonVisible';
                 setCountTime(false);
@@ -229,7 +223,7 @@ const Game: React.FC = () => {
                     {"Save result"}
                 </button>
             </div>
-            <Modal toggle={modalState} result={secondsCounter.current}/>
+            <ResultForm toggle={modalState} result={secondsCounter.current} onSubmit={playAgain}/>
         </div>
     );
 }

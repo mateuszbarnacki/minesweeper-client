@@ -1,16 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import * as P from './api/paths';
 import AppBar from "./AppBar";
+import {mapSeconds} from "./Timer";
 
 const Ranking: React.FC = () => {
     const [gameResults, setGameResults] = useState([]);
 
     useEffect(() => {
-        fetch(P.baseURL + P.minesweeper)
-            .then(response => response.json())
-            .then((result) => {
-                setGameResults(result);
-            });
+        const fetchData = async () => {
+            const response = await fetch(P.baseURL + P.minesweeper);
+            const result = await response.json();
+            setGameResults(result);
+        };
+
+        fetchData();
     }, []);
 
     return (
@@ -27,8 +30,8 @@ const Ranking: React.FC = () => {
                 <tbody>
                 {gameResults.map((gameResult) => (
                     <tr>
-                        <td>gameResult.userName</td>
-                        <td>gameResult.time</td>
+                        <td>{gameResult.userName}</td>
+                        <td>{mapSeconds(gameResult.time)}</td>
                     </tr>
                 ))}
                 </tbody>
