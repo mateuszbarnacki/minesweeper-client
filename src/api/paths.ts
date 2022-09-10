@@ -1,4 +1,4 @@
-export const baseURL = 'http://localhost:8080'
+export const baseURL = 'https://pacific-meadow-69005.herokuapp.com'
 
 export const minesweeper = '/minesweeper/';
 
