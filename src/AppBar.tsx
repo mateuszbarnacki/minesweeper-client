@@ -8,10 +8,10 @@ const AppBar: React.FC = () => {
         <div className="header">
             <div className="nav">
                 <ol>
-                    <li><a href="#"><i><FontAwesomeIcon icon={faBars}/></i></a>
+                    <li><i><FontAwesomeIcon icon={faBars}/></i>
                         <ul>
-                            <li><a href="#">Game</a></li>
-                            <li><a href="#">Ranking</a></li>
+                            <li><a href="/">Game</a></li>
+                            <li><a href="/minesweeper">Ranking</a></li>
                         </ul>
                     </li>
                 </ol>
