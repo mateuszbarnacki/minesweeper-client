@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faBars, faBomb} from "@fortawesome/free-solid-svg-icons";
-import './index.css';
+import '../index.css';
 
 /**
  * @author Mateusz Barnacki
@@ -15,7 +15,7 @@ const AppBar: React.FC = () => {
                 <ol>
                     <li><i><FontAwesomeIcon icon={faBars}/></i>
                         <ul>
-                            <li><a href="/">Game</a></li>
+                            <li><a href="/game">Game</a></li>
                             <li><a href="/minesweeper">Ranking</a></li>
                         </ul>
                     </li>

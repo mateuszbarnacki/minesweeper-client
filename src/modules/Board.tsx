@@ -1,6 +1,6 @@
 import React from 'react';
 import Square from './Square';
-import './index.css';
+import '../index.css';
 import {Field} from "./Game";
 
 /**

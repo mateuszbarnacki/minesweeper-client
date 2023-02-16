@@ -1,6 +1,6 @@
 import React, {MutableRefObject, useRef, useState} from 'react';
 import Board from './Board';
-import './index.css';
+import '../index.css';
 import Timer from './Timer';
 import AppBar from "./AppBar";
 import ResultForm from "./ResultForm";

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {MinesweeperDto} from "./api/apiModels";
-import * as P from './api/paths';
+import {MinesweeperDto} from "../api/apiModels";
+import * as P from '../api/paths';
 
 /**
  * @author Mateusz Barnacki
@@ -19,7 +19,7 @@ const ResultForm: React.FC<ResultFormProps> = (props) => {
     const handleClick: React.MouseEventHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         const resultToSave: MinesweeperDto = {userName: name, time: props.result};
-        fetch(P.baseURL + P.minesweeper,
+        fetch(P.base + P.minesweeper,
             {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
