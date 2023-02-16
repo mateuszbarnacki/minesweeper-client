@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import * as P from './api/paths';
 import AppBar from "./AppBar";
 import {mapSeconds} from "./Timer";
+import {useSelector} from "react-redux";
+import {getMinesweeperResults} from "../store/minesweeper/selectors";
+import {MinesweeperDto} from "../api/apiModels";
 
 /**
  * @author Mateusz Barnacki
@@ -9,17 +11,14 @@ import {mapSeconds} from "./Timer";
  * @since 2022-09-09
  */
 const Ranking: React.FC = () => {
-    const [gameResults, setGameResults] = useState([]);
+    const results = useSelector(getMinesweeperResults);
+    const [gameResults, setGameResults] = useState<MinesweeperDto[]>([]);
 
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch(P.baseURL + P.minesweeper);
-            const result = await response.json();
-            setGameResults(result);
-        };
-
-        fetchData();
-    }, []);
+        if (results) {
+            setGameResults(results);
+        }
+    }, [results]);
 
     return (
         <div className="ranking">
@@ -31,7 +30,6 @@ const Ranking: React.FC = () => {
                     <th>Result</th>
                 </tr>
                 </thead>
-
                 <tbody>
                 {gameResults.map((gameResult) => (
                     <tr>
