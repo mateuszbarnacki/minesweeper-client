@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {MinesweeperDto} from "../api/apiModels";
 import * as P from '../api/paths';
+import {localStorageAuthToken} from "../api/constants";
 
 /**
  * @author Mateusz Barnacki
@@ -22,10 +23,17 @@ const ResultForm: React.FC<ResultFormProps> = (props) => {
         fetch(P.base + P.minesweeper,
             {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + window.localStorage.getItem(localStorageAuthToken)
+                },
                 body: JSON.stringify(resultToSave)
-                }
-        ).then(
+            }
+        ).then((response) => {
+            if (response.status !== 201) {
+                throw new Error("Server problem: " + response.status);
+            }
+        }).then(
             () => setFormState(false)
         ).then(
             () => props.onSubmit(e)

@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import AppBar from "./AppBar";
 import {mapSeconds} from "./Timer";
-import {useSelector} from "react-redux";
-import {getMinesweeperResults} from "../store/minesweeper/selectors";
 import {MinesweeperDto} from "../api/apiModels";
+import * as P from "../api/paths";
+import {localStorageAuthToken} from "../api/constants";
 
 /**
  * @author Mateusz Barnacki
@@ -11,14 +11,27 @@ import {MinesweeperDto} from "../api/apiModels";
  * @since 2022-09-09
  */
 const Ranking: React.FC = () => {
-    const results = useSelector(getMinesweeperResults);
     const [gameResults, setGameResults] = useState<MinesweeperDto[]>([]);
 
     useEffect(() => {
-        if (results) {
-            setGameResults(results);
-        }
-    }, [results]);
+        fetch(P.base + P.minesweeper,
+            {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + window.localStorage.getItem(localStorageAuthToken)
+                }
+            }).then((response) => {
+                if (response.status === 200) {
+                    return response.json();
+                } else {
+                    throw new Error("Server problem: " + response.status);
+                }
+        }).then((json) => {
+            setGameResults(json);
+        }).catch(error => {
+            console.error(error);
+        });
+    }, []);
 
     return (
         <div className="ranking">

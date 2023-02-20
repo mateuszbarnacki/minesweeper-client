@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faBars, faBomb} from "@fortawesome/free-solid-svg-icons";
+import {localStorageAuthToken} from "../api/constants";
 import '../index.css';
 
 /**
@@ -9,6 +10,10 @@ import '../index.css';
  * @since 2022-09-08
  */
 const AppBar: React.FC = () => {
+    const logoutUser = () => {
+        window.localStorage.removeItem(localStorageAuthToken);
+    }
+
     return (
         <div className="header">
             <div className="nav">
@@ -17,6 +22,7 @@ const AppBar: React.FC = () => {
                         <ul>
                             <li><a href="/game">Game</a></li>
                             <li><a href="/minesweeper">Ranking</a></li>
+                            <li><a href="/" onClick={logoutUser}>Logout</a></li>
                         </ul>
                     </li>
                 </ol>
